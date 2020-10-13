@@ -1,0 +1,31 @@
+<div class="container p-4">
+  <div class="row  p-5">
+  <div class="col-md-4">
+  Hello World, Select the City
+</div>
+  <div class="col-md-4">
+  <select class="form-control" [(ngModel)]="selectedCity" (change)="onChange($event.target.value)">
+    <option value="Heidenheim" selected>Heidenheim</option>
+    <option value="germany">Germany</option>
+  </select>
+</div>
+</div>
+<div style="border-radius: 5px solid gray;border:3px;background-color: #eef8fb;padding: 10px;">
+  <p style="font:11px; color:orange">{{ timeInfo | date: "MMM d, y, h:mm:ss a" }}</p>
+  <div class="cityName">
+    <h3>{{weatherData.name}}, {{weatherData.sys.country}}</h3>
+  </div>
+  <div class="temperature">
+    Feels Like {{ (weatherData.main.feels_like  - 273.15) | number:'1.0-0' }} * C
+  </div>
+
+  <div class="weather">
+    {{weatherData.sys.type}} m/s ENE
+    {{ weatherData.main.pressure}}hPa
+    Humidity:   {{ weatherData.main.humidity}}% <br>
+    UV: {{ weatherData.weather.speed}}
+    Dew point: 6°C
+    Visibility: {{ weatherData.visibility / 1000 }} km
+  </div>
+
+</div>
